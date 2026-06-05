@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Campus Placement Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Campus Placement Predictor</h1>
+            <p>Enter your academic details to predict your placement probability.</p>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Form Section -->
+            <section class="card form-section">
+                <h2>🎓 Student Information</h2>
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label for="ssc_p">10th Percentage</label>
+                        <input type="number" id="ssc_p" name="ssc_p" step="0.1" value="75" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hsc_p">12th Percentage</label>
+                        <input type="number" id="hsc_p" name="hsc_p" step="0.1" value="75" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cgpa">UG CGPA</label>
+                        <input type="number" id="cgpa" name="cgpa" step="0.01" value="7.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="backlogs">Number of Backlogs</label>
+                        <input type="number" id="backlogs" name="backlogs" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
+                        <select id="branch" name="branch" required>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Civil">Civil</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prog_skill">Programming Skill (1-10)</label>
+                        <input type="range" id="prog_skill" name="prog_skill" min="1" max="10" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="projects">Number of Projects</label>
+                        <input type="number" id="projects" name="projects" value="2" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Internship Experience</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="internship" value="Yes"> Yes</label>
+                            <label><input type="radio" name="internship" value="No" checked> No</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aptitude">Aptitude Score</label>
+                        <input type="number" id="aptitude" name="aptitude" value="60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comm_skill">Communication Skills (1-10)</label>
+                        <input type="range" id="comm_skill" name="comm_skill" min="1" max="10" value="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="mock_interviews">Mock Interviews</label>
+                        <input type="number" id="mock_interviews" name="mock_interviews" value="1" required>
+                    </div>
+                    <button type="submit" class="btn-predict">Predict Result</button>
+                </form>
+            </section>
+
+            <!-- Results Section -->
+            <section class="card results-section">
+                <h2>📊 Prediction Result</h2>
+                <div id="result-display" class="result-placeholder">
+                    <p>Enter details and click Predict to see the result.</p>
+                </div>
+                <canvas id="probabilityChart"></canvas>
+            </section>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
